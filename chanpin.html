@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品理念 - 派择自然</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 产品理念页面特定样式 */
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .product-concept-page {
+            padding: 40px 5% 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: #f9f5e9;
+            position: relative;
+            overflow: hidden;
+            width: 90%;
+        }
+        
+        .concept-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+        }
+        
+        .concept-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #3e8828, #a2d55a);
+            opacity: 0.6;
+        }
+        
+        .page-title {
+            font-size: 38px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 500;
+            text-align: left;
+        }
+        
+        .page-divider-line {
+            height: 1px;
+            background: linear-gradient(to right, #333, transparent);
+            margin: 0 0 30px;
+            width: 100%;
+        }
+        
+        .world-map-container {
+            margin: 40px auto 70px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            position: relative;
+        }
+        
+        .world-map-container img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+        
+        .world-map-container img:hover {
+            transform: translateY(-5px);
+        }
+        
+        .world-map-container::before {
+            content: '探索全球';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            color: #8cc63f;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+        
+        .concept-section {
+            margin-bottom: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            padding: 0;
+        }
+        
+        .concept-title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .concept-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background-color: #8cc63f;
+        }
+        
+        .concept-text {
+            font-size: 17px;
+            color: #555;
+            line-height: 1.9;
+            text-align: justify;
+            width: 80%;
+            margin: 0 auto 40px auto;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            position: relative;
+            box-sizing: border-box;
+        }
+        
+        .concept-text::before {
+            display: none;
+        }
+        
+        .researcher-image {
+            margin: 50px auto 80px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            position: relative;
+        }
+        
+        .researcher-image img {
+            max-width: 108%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .researcher-image img:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .researcher-image::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* 品控部分样式 */
+        .quality-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-align: justify;
+            max-width: 80%;
+            margin-left: auto;
+        }
+        
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin: 0 auto 80px;
+            width: 80%;
+            max-width: 900px;
+        }
+        
+        .certification-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .certification-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .certification-icon {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
+            object-fit: contain;
+        }
+        
+        .certification-name {
+            font-size: 16px;
+            color: #8cc63f;
+            font-weight: normal;
+            margin-top: 5px;
+        }
+        
+        .factory-image {
+            text-align: center;
+            margin: 40px 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .factory-image img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .factory-image-container {
+            margin: 50px auto 80px;
+            text-align: center;
+            width: 80%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .factory-image-container img {
+            max-width: 108%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+        
+        .factory-image-container img:hover {
+            transform: translateY(-5px);
+        }
+        
+        .research-images-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 50px auto 80px;
+            width: 80%;
+        }
+        
+        .research-image-item {
+            flex: 1;
+            max-width: 300px;
+        }
+        
+        .research-image-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .research-image-item img:hover {
+            transform: translateY(-5px);
+        }
+        
+        .concept-image {
+            text-align: center;
+            margin: 40px 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .concept-image img {
+            max-width: 72%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+        
+        .concept-image img:hover {
+            transform: translateY(-5px);
+        }
+        
+        .certification-image {
+            max-width: 108%;
+            height: auto;
+            display: block;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+        
+        .certification-image:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* 头部导航样式 */
+        header {
+            background-color: rgb(121,171,12);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .footer-slogan {
+            background-color: rgb(121,171,12);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .footer-top-section {
+            background-color: rgb(121,171,12);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="image/log3.png" alt="派则自然">
+            <span>派择自然</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="pinpaill.html">品牌理念</a></li>
+                <li><a href="chanpin.html" class="active">产品理念</a></li>
+                <li><a href="hezuost.html">合作伙伴</a></li>
+                <li><a href="news.html">新闻资讯</a></li>
+                <li><a href="#contact">关于我们</a></li>
+            </ul>
+        </nav>
+        <div class="user-section">
+            <span>¥0.00</span>
+            <img src="image/购物车.png" alt="购物车" class="cart-icon">
+            <a href="#account">账户</a>
+        </div>
+    </header>
+
+    <div class="product-concept-page">
+        <h1 class="page-title">产品理念</h1>
+        <div class="page-divider-line"></div>
+        
+        <div class="concept-image">
+            <img src="image/cpll图一.png" alt="产品理念">
+        </div>
+        
+        <div class="concept-container">
+            <div class="concept-section">
+                <h2 class="concept-title">全球精选</h2>
+                <div class="concept-text">
+                    <p>无论是荒漠戈壁，还是森林草原；无论是一线临床，还是书籍文献；无论是偏僻乡村，还是繁华都市，任何地点、任何时间、任何场景，但凡有利于宠物健康生活的物质、方式，都会被发掘。</p>
+                    <p>我们不断探索的故事，我们广泛搜集来自于全球不同的国家的宠物健康理念，选取不同国家的优质资料，再结合我们的知识储备、临床经验，为宠物制定更加科学合理的生活建议。</p>
+                </div>
+            </div>
+            
+            <div class="researcher-image">
+                <img src="image/cpll图二.png" alt="产品研究人员">
+            </div>
+            
+            <!-- 添加品控部分 -->
+            <div class="concept-section">
+                <h2 class="concept-title">品控</h2>
+                <div class="concept-text">
+                    <p>我们严格按一流原料，一流加工工艺，生产建成一流的产品，从生产品保障产品安全，全球多家优质工厂合作公司。</p>
+                    <p>因此我们能配合各家可可研发的新原料，先进的生产工艺，卫生合格的生产环境，所有生产产品，不仅是对环境健康具正面引导，提昇自然元素持续的能量。</p>
+                </div>
+            </div>
+            
+            <!-- 添加认证部分 -->
+            <div class="certification-section">
+                <img src="image/cpll图三.png" alt="认证图标" class="certification-image">
+            </div>
+            
+            <!-- 添加工厂图片 -->
+            <div class="factory-image-container">
+                <img src="image/cpll图四.png" alt="工厂图片" class="factory-img">
+            </div>
+            
+            <!-- 添加研发模块 -->
+            <div class="concept-section">
+                <h2 class="concept-title">研发</h2>
+                <div class="concept-text">
+                    <p>我们始终以"宠物健康"为核心，研发真正有益于"宠物健康的产品"，和一流的研发单位合作，我们开发"纯一物成分"而看"全一线技术"作为宠物的保健心，用以提供更优质巩固再提升！研发的产品，其核心成分并不会太相同。</p>
+                    <p>另外，所有新发出的产品，都要结合N个月的产品标识，确保产品符合多项双盲对照实验测试用件，消费者客观对产品使用，我们结合德国的机器，产品能力更物理审评作长期的改变。</p>
+                </div>
+            </div>
+            
+            <!-- 添加研发图片组 -->
+            <div class="research-images-container">
+                <div class="research-image-item">
+                    <img src="image/cpll图五.png" alt="研发图片1">
+                </div>
+                <div class="research-image-item">
+                    <img src="image/cpll图六.png" alt="研发图片2">
+                </div>
+                <div class="research-image-item">
+                    <img src="image/cpll图七.png" alt="研发图片3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚前的分隔线 -->
+    <div class="page-divider"></div>
+
+    <!-- 页脚区域 -->
+    <footer class="footer-wrapper">
+        <div class="footer-top-section">
+            <div class="footer-logo-container">
+                <img src="image/log3.png" alt="派则自然" class="footer-logo-white">
+                <div class="footer-slogan">从自然中寻找答案</div>
+            </div>
+        </div>
+        
+        <div class="footer-main-section">
+            <div class="footer-column contact-column">
+                <h3>联系我们</h3>
+                <p>地址：深圳市宝安区海秀路黄金台工业区2-2105</p>
+                <p>电话：400-1199-631</p>
+                <p>邮箱：petandnature@163.com</p>
+            </div>
+            
+            <div class="footer-column follow-column">
+                <h3>关注我们</h3>
+                <p>小红书：</p>
+                <p>公众号：</p>
+            </div>
+            
+            <div class="footer-column subscribe-column">
+                <h3>邮件订阅</h3>
+                <div class="subscribe-form">
+                    <input type="email" placeholder="请输入您的邮箱">
+                    <button type="submit">点击此处订阅</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>PET&NATURE深圳派自然宠物用品有限责任公司 浙ICP备202310578号-2</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

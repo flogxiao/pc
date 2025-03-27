@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合作伙伴 - 派择自然</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 合作伙伴页面特定样式 */
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .partners-page {
+            padding: 60px 5% 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: #f9f5e9;
+            position: relative;
+            overflow: hidden;
+            width: 90%;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 500;
+            text-align: left;
+            position: relative;
+        }
+        
+        .page-divider-line {
+            height: 1px;
+            background: linear-gradient(to right, #333, transparent);
+            margin: 30px 0 60px;
+            width: 100%;
+        }
+        
+        .partners-main-image {
+            width: 100%;
+            margin: 0 0 50px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .partners-main-image img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .partner-item {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .partner-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .partner-info {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .partner-info p {
+            margin: 5px 0;
+        }
+        
+        /* 加入我们横幅样式 */
+        .join-us-banner {
+            background-color: #9ed45a;
+            padding: 30px 0;
+            text-align: center;
+            margin: 60px -10%;
+            border-radius: 0;
+            width: 120%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .join-us-banner h2 {
+            font-size: 32px;
+            color: #333;
+            margin: 0 0 15px;
+            font-weight: 500;
+        }
+        
+        .join-us-banner p {
+            font-size: 28px;
+            color: #333;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+        
+        .service-types {
+            margin-top: 20px;
+        }
+        
+        .service-types span {
+            display: inline-block;
+            margin: 0 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        
+        /* 专业分类展示样式 */
+        .expertise-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin: 70px 0;
+        }
+        
+        .expertise-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .expertise-card a {
+            display: block;
+            width: 60%;
+        }
+        
+        .expertise-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+            border-radius: 10px;
+        }
+        
+        .expertise-card:hover img {
+            transform: scale(1.02);
+        }
+        
+        .expertise-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: left;
+        }
+        
+        .expertise-overlay h3 {
+            font-size: 22px;
+            margin: 0 0 5px;
+            font-weight: 500;
+        }
+        
+        .expertise-overlay p {
+            font-size: 14px;
+            margin: 0 0 10px;
+            opacity: 0.9;
+        }
+        
+        .expertise-overlay .learn-more-btn {
+            display: inline-block;
+            padding: 6px 15px;
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .expertise-overlay .learn-more-btn:hover {
+            background-color: white;
+            color: #333;
+        }
+        
+        .banner-container {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .banner-image {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* 头部导航样式 */
+        header {
+            background-color: rgb(121,171,12);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .footer-slogan {
+            background-color: rgb(121,171,12);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .footer-top-section {
+            background-color: rgb(121,171,12);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="image/log3.png" alt="派则自然">
+            <span>派择自然</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="pinpaill.html">品牌理念</a></li>
+                <li><a href="chanpin.html">产品理念</a></li>
+                <li><a href="hezuost.html" class="active">合作伙伴</a></li>
+                <li><a href="news.html">新闻资讯</a></li>
+                <li><a href="#contact">关于我们</a></li>
+            </ul>
+        </nav>
+        <div class="user-section">
+            <span>¥0.00</span>
+            <img src="image/购物车.png" alt="购物车" class="cart-icon">
+            <a href="#account">账户</a>
+        </div>
+    </header>
+
+    <div class="partners-page">
+        <h1 class="page-title">合作伙伴</h1>
+        <div class="page-divider-line"></div>
+        
+        <div class="banner-container">
+            <img src="image/hzhb图一.png" alt="合作伙伴横幅" class="banner-image">
+        </div>
+        
+        <div class="partners-section">
+            <div class="partner-item">
+                <h2 class="partner-title">深圳比比宠物医院</h2>
+                <div class="partner-info">
+                    <p>地址：深圳市宝安区金博路冠城世家2-3105</p>
+                    <p>电话：400-1199-611</p>
+                    <p>邮箱：petandnature@163.com</p>
+                </div>
+            </div>
+            
+            <div class="partner-item">
+                <h2 class="partner-title">深圳比比宠物医院</h2>
+                <div class="partner-info">
+                    <p>地址：深圳市宝安区金博路冠城世家2-3105</p>
+                    <p>电话：400-1199-611</p>
+                    <p>邮箱：petandnature@163.com</p>
+                </div>
+            </div>
+            
+            <div class="partner-item">
+                <h2 class="partner-title">深圳比比宠物医院</h2>
+                <div class="partner-info">
+                    <p>地址：深圳市宝安区金博路冠城世家2-3105</p>
+                    <p>电话：400-1199-611</p>
+                    <p>邮箱：petandnature@163.com</p>
+                </div>
+            </div>
+            
+            <div class="partner-item">
+                <h2 class="partner-title">深圳比比宠物医院</h2>
+                <div class="partner-info">
+                    <p>地址：深圳市宝安区金博路冠城世家2-3105</p>
+                    <p>电话：400-1199-611</p>
+                    <p>邮箱：petandnature@163.com</p>
+                </div>
+            </div>
+            
+            <div class="partner-item">
+                <h2 class="partner-title">深圳比比宠物医院</h2>
+                <div class="partner-info">
+                    <p>地址：深圳市宝安区金博路冠城世家2-3105</p>
+                    <p>电话：400-1199-611</p>
+                    <p>邮箱：petandnature@163.com</p>
+                </div>
+            </div>
+            
+            <div class="partner-item">
+                <h2 class="partner-title">深圳比比宠物医院</h2>
+                <div class="partner-info">
+                    <p>地址：深圳市宝安区金博路冠城世家2-3105</p>
+                    <p>电话：400-1199-611</p>
+                    <p>邮箱：petandnature@163.com</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 加入我们横幅 -->
+        <div class="join-us-banner">
+            <h2>加入我们，获得自然赋能</h2>
+            <p>400-1199-611</p>
+            <div class="service-types">
+                <span>学术培训</span>
+                <span>营销渠道</span>
+                <span>产品支持</span>
+            </div>
+        </div>
+        
+        <!-- 专业分类展示 -->
+        <div class="expertise-categories">
+            <!-- 中医类别 -->
+            <div class="expertise-card">
+                <a href="#">
+                    <img src="image/zy.png" alt="中医">
+                </a>
+            </div>
+            
+            <!-- 心理行为学类别 -->
+            <div class="expertise-card">
+                <a href="#">
+                    <img src="image/xl.png" alt="心理行为学">
+                </a>
+            </div>
+            
+            <!-- 芳疗类别 -->
+            <div class="expertise-card">
+                <a href="#">
+                    <img src="image/fl.png" alt="芳疗">
+                </a>
+            </div>
+            
+            <!-- 食疗类别 -->
+            <div class="expertise-card">
+                <a href="#">
+                    <img src="image/sl.png" alt="食疗">
+                </a>
+            </div>
+            
+            <!-- 低温类别 -->
+            <div class="expertise-card">
+                <a href="#">
+                    <img src="image/dx.png" alt="低温">
+                </a>
+            </div>
+            
+            <!-- 理疗类别 -->
+            <div class="expertise-card">
+                <a href="#">
+                    <img src="image/ll.png" alt="理疗">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚前的分隔线 -->
+    <div class="page-divider"></div>
+
+    <!-- 页脚区域 -->
+    <footer class="footer-wrapper">
+        <div class="footer-top-section">
+            <div class="footer-logo-container">
+                <img src="image/log3.png" alt="派则自然" class="footer-logo-white">
+                <div class="footer-slogan">从自然中寻找答案</div>
+            </div>
+        </div>
+        
+        <div class="footer-main-section">
+            <div class="footer-column contact-column">
+                <h3>联系我们</h3>
+                <p>地址：深圳市宝安区海秀路黄金台工业区2-2105</p>
+                <p>电话：400-1199-631</p>
+                <p>邮箱：petandnature@163.com</p>
+            </div>
+            
+            <div class="footer-column follow-column">
+                <h3>关注我们</h3>
+                <p>小红书：</p>
+                <p>公众号：</p>
+            </div>
+            
+            <div class="footer-column subscribe-column">
+                <h3>邮件订阅</h3>
+                <div class="subscribe-form">
+                    <input type="email" placeholder="请输入您的邮箱">
+                    <button type="submit">点击此处订阅</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>PET&NATURE深圳派自然宠物用品有限责任公司 浙ICP备202310578号-2</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

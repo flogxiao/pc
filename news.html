@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新闻资讯 - 派择自然</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 新闻资讯页面特定样式 */
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f5e9;
+            color: #333;
+        }
+        
+        .news-page {
+            padding: 60px 5% 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: #f9f5e9;
+            position: relative;
+            overflow: hidden;
+            width: 90%;
+        }
+        
+        .page-title {
+            font-size: 42px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 500;
+            text-align: left;
+            position: relative;
+        }
+        
+        .page-divider-line {
+            height: 1px;
+            background: linear-gradient(to right, #333, transparent);
+            margin: 30px 0 60px;
+            width: 100%;
+        }
+        
+        /* 新闻列表视图 */
+        .news-list {
+            display: block;
+        }
+        
+        .news-list.hidden {
+            display: none;
+        }
+        
+        .news-item {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .news-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .news-content {
+            width: 100%;
+            max-width: 90%;
+        }
+        
+        .news-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .news-date {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .news-summary {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* 详细文章视图 */
+        .article-view {
+            display: none;
+            padding: 20px 0;
+        }
+        
+        .article-view.active {
+            display: block;
+        }
+        
+        .article-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .article-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .article-date {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .article-content {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.8;
+            text-align: justify;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .article-image {
+            margin: 20px auto 30px;
+            display: block;
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 8px 20px;
+            border: 1px solid #8cc63f;
+            border-radius: 4px;
+            color: #8cc63f;
+            background-color: transparent;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .back-btn:hover {
+            background-color: #8cc63f;
+            color: white;
+        }
+        
+        /* 文章导航按钮样式 */
+        .article-navigation {
+            margin: 40px 0 20px;
+            text-align: left;
+        }
+        
+        .prev-article-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            border: 1px solid #8cc63f;
+            border-radius: 4px;
+            color: #8cc63f;
+            background-color: transparent;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .prev-article-btn:hover {
+            background-color: #8cc63f;
+            color: white;
+        }
+        
+        /* 头部导航样式 */
+        header {
+            background-color: rgb(121,171,12);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .footer-slogan {
+            background-color: rgb(121,171,12);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .footer-top-section {
+            background-color: rgb(121,171,12);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="image/log3.png" alt="派则自然">
+            <span>派择自然</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="pinpaill.html">品牌理念</a></li>
+                <li><a href="chanpin.html">产品理念</a></li>
+                <li><a href="hezuost.html">合作伙伴</a></li>
+                <li><a href="news.html" class="active">新闻资讯</a></li>
+                <li><a href="#contact">关于我们</a></li>
+            </ul>
+        </nav>
+        <div class="user-section">
+            <span>¥0.00</span>
+            <img src="image/购物车.png" alt="购物车" class="cart-icon">
+            <a href="#account">账户</a>
+        </div>
+    </header>
+
+    <div class="news-page">
+        <!-- 新闻列表视图 -->
+        <div class="news-list">
+            <h1 class="page-title">新闻资讯</h1>
+            <div class="page-divider-line"></div>
+            
+            <div class="news-item" data-id="1">
+                <div class="news-content">
+                    <h2 class="news-title">情绪在不容易察觉的角落</h2>
+                    <p class="news-date">2025/12/25 20:00:32</p>
+                    <div class="news-summary">
+                        <p>2024年12月的同时段，空荣希尔治，周除一个"研发医院外达"的公众，因为说明我自己偏向市多佛手多巧常常健康同阿，恰恰星自然医生手机都毛主解决的，更精炼的话，有很多长期过的医生手进行的可能....</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="news-item" data-id="2">
+                <div class="news-content">
+                    <h2 class="news-title">探索自然疗法的新趋势</h2>
+                    <p class="news-date">2025/12/22 15:30:10</p>
+                    <div class="news-summary">
+                        <p>在过去的几年中，宠物自然疗法领域取得了显著进展。以植物精油为基础的治疗方案已被越来越多的宠物主人接受。我们的研究团队进行了一系列深入探索，发现某些特定的植物提取物能够有效地改善宠物的皮肤健康问题...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="news-item" data-id="3">
+                <div class="news-content">
+                    <h2 class="news-title">专家解析宠物情绪管理</h2>
+                    <p class="news-date">2025/12/18 10:45:22</p>
+                    <div class="news-summary">
+                        <p>宠物行为专家王博士近期分享了关于宠物情绪管理的重要见解。在一次行业研讨会上，他强调了识别宠物情绪信号的重要性，并提出了几种通过自然方式帮助宠物缓解焦虑的方法。在这场讲座中，与会者了解到精油芳疗如何成为宠物情绪管理的有效工具...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="news-item" data-id="4">
+                <div class="news-content">
+                    <h2 class="news-title">派择自然参与国际宠物健康论坛</h2>
+                    <p class="news-date">2025/12/10 09:15:40</p>
+                    <div class="news-summary">
+                        <p>上个月，派择自然派代表团参加了在瑞士日内瓦举行的国际宠物健康论坛。我们的创始人与来自全球各地的专家学者共同探讨了宠物健康领域的最新研究成果。论坛上，我们展示了多项自主研发的纯天然宠物护理产品，引起了与会者的广泛关注和积极反馈...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="news-item" data-id="5">
+                <div class="news-content">
+                    <h2 class="news-title">新产品发布：花精系列护理液</h2>
+                    <p class="news-date">2025/12/05 14:20:15</p>
+                    <div class="news-summary">
+                        <p>派择自然近日隆重推出全新花精系列宠物护理液。这一系列产品采用了多种珍贵花卉精华，通过特殊提取工艺保留了天然成分的活性。经过六个月的临床试验，证明该系列产品对缓解宠物皮肤过敏、改善毛发质量有显著效果。新产品将于下月正式上市，敬请期待...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="news-item" data-id="6">
+                <div class="news-content">
+                    <h2 class="news-title">培训讲座：中医理念在宠物护理中的应用</h2>
+                    <p class="news-date">2025/11/28 16:40:38</p>
+                    <div class="news-summary">
+                        <p>本月初，派择自然在深圳总部举办了一场面向宠物医院的专业培训讲座，主题为"中医理念在现代宠物护理中的应用"。来自全国各地的50余名宠物医生参加了此次活动。讲座中，我们的中医专家团队详细介绍了如何将传统中医理念与现代宠物医学结合，为宠物提供更全面的健康解决方案...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 文章详细视图 -->
+        <div class="article-view" id="article-1">
+            <button class="back-btn" onclick="backToList()">← 返回列表</button>
+            <div class="article-header">
+                <h1 class="article-title">情绪在不容易察觉的角落</h1>
+                <p class="article-date">2025/12/25 20:00:32</p>
+                <img src="image/news1.png" alt="宠物情绪管理" class="article-image">
+            </div>
+            <div class="article-content">
+                <p>2024年12月的同时段，空荣希尔治，周除一个"研发医院外达"的公众，因为说明我自己偏向市多佛手多巧常常健康同阿，恰恰星自然医生手机都毛主解决的，更精炼的话，有很多长期过的医生手进行的可能。那下我应该用什么方式去处理这种情况？这是很多宠物主人经常困惑的问题。</p>
+                
+                <p>在动物行为学研究中，越来越多的专家认为，宠物的情绪状态会对其生理健康产生深远影响。传统的兽医实践往往侧重于身体症状的治疗，而忽视潜在的情绪因素。然而，随着我们对动物心理的理解不断深入，一种整合身心的治疗方法变得日益重要。</p>
+                
+                <p>2024年12月的同时段，空荣希尔治，周除一个"研发医院外达"的公众，因为说明我自己偏向市多佛手多巧常常健康同阿，恰恰星自然医生手机都毛主解决的，更精炼的话，有很多长期过的医生手进行的可能。那下我应该用什么方式去处理这种情况？这是很多宠物主人经常困惑的问题。</p>
+                
+                <p>2024年12月的同时段，空荣希尔治，周除一个"研发医院外达"的公众，因为说明我自己偏向市多佛手多巧常常健康同阿，恰恰星自然医生手机都毛主解决的，更精炼的话，有很多长期过的医生手进行的可能。那下我应该用什么方式去处理这种情况？这是很多宠物主人经常困惑的问题。</p>
+                
+                <p>2024年12月的同时段，空荣希尔治，周除一个"研发医院外达"的公众，因为说明我自己偏向市多佛手多巧常常健康同阿，恰恰星自然医生手机都毛主解决的，更精炼的话，有很多长期过的医生手进行的可能。那下我应该用什么方式去处理这种情况？这是很多宠物主人经常困惑的问题。</p>
+                
+                <div class="article-navigation">
+                    <a href="#" class="prev-article-btn" onclick="showPrevArticle(1)">← 上一篇</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 其他文章详细视图（类似结构） -->
+        <div class="article-view" id="article-2">
+            <button class="back-btn" onclick="backToList()">← 返回列表</button>
+            <div class="article-header">
+                <h1 class="article-title">探索自然疗法的新趋势</h1>
+                <p class="article-date">2025/12/22 15:30:10</p>
+                <img src="image/news1.png" alt="自然疗法研究" class="article-image">
+            </div>
+            <div class="article-content">
+                <p>在过去的几年中，宠物自然疗法领域取得了显著进展。以植物精油为基础的治疗方案已被越来越多的宠物主人接受。我们的研究团队进行了一系列深入探索，发现某些特定的植物提取物能够有效地改善宠物的皮肤健康问题。</p>
+                
+                <p>在过去的几年中，宠物自然疗法领域取得了显著进展。以植物精油为基础的治疗方案已被越来越多的宠物主人接受。我们的研究团队进行了一系列深入探索，发现某些特定的植物提取物能够有效地改善宠物的皮肤健康问题。</p>
+                
+                <p>在过去的几年中，宠物自然疗法领域取得了显著进展。以植物精油为基础的治疗方案已被越来么宠物主人接受。我们的研究团队进行了一系列深入探索，发现某些特定的植物提取物能够有效地改善宠物的皮肤健康问题。</p>
+                
+                <p>在过去的几年中，宠物自然疗法领域取得了显著进展。以植物精油为基础的治疗方案已被越来越多的宠物主人接受。我们的研究团队进行了一系列深入探索，发现某些特定的植物提取物能够有效地改善宠物的皮肤健康问题。</p>
+                
+                <div class="article-navigation">
+                    <a href="#" class="prev-article-btn" onclick="showPrevArticle(2)">← 上一篇</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 此处可以添加更多文章的详细视图 -->
+        <div class="article-view" id="article-3">
+            <button class="back-btn" onclick="backToList()">← 返回列表</button>
+            <div class="article-header">
+                <h1 class="article-title">专家解析宠物情绪管理</h1>
+                <p class="article-date">2025/12/18 10:45:22</p>
+                <img src="image/news1.png" alt="宠物情绪管理研讨会" class="article-image">
+            </div>
+            <div class="article-content">
+                <p>宠物行为专家王博士近期分享了关于宠物情绪管理的重要见解。在一次行业研讨会上，他强调了识别宠物情绪信号的重要性，并提出了几种通过自然方式帮助宠物缓解焦虑的方法。在这场讲座中，与会者了解到精油芳疗如何成为宠物情绪管理的有效工具。</p>
+                
+                <p>王博士指出，宠物的情绪健康与其生理健康密切相关。许多宠物行为问题实际上源于未被察觉的焦虑或压力。他特别强调了嗅觉在宠物情绪调节中的重要性。"与人类不同，宠物的世界很大程度上通过气味来感知和体验。精心选择的芳香精油可以对宠物的情绪系统产生积极影响。"</p>
+                
+                <p>研讨会展示了几项有关宠物对不同精油反应的研究结果。研究表明，薰衣草、洋甘菊和马郁兰等精油对缓解宠物焦虑特别有效。王博士强调，使用精油时必须遵循安全指南，因为某些对人类安全的精油可能对宠物有害。</p>
+                
+                <p>讲座最后，王博士介绍了派择自然开发的专门针对宠物情绪管理的产品系列。这些产品经过严格测试，确保对宠物安全有效。与会者对这一创新方法表示极大兴趣，许多人表示将在自己的实践中尝试这些自然疗法。</p>
+                
+                <div class="article-navigation">
+                    <a href="#" class="prev-article-btn" onclick="showPrevArticle(3)">← 上一篇</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="article-view" id="article-4">
+            <button class="back-btn" onclick="backToList()">← 返回列表</button>
+            <div class="article-header">
+                <h1 class="article-title">派择自然参与国际宠物健康论坛</h1>
+                <p class="article-date">2025/12/10 09:15:40</p>
+                <img src="image/news1.png" alt="国际宠物健康论坛" class="article-image">
+            </div>
+            <div class="article-content">
+                <p>上个月，派择自然派代表团参加了在瑞士日内瓦举行的国际宠物健康论坛。我们的创始人与来自全球各地的专家学者共同探讨了宠物健康领域的最新研究成果。论坛上，我们展示了多项自主研发的纯天然宠物护理产品，引起了与会者的广泛关注和积极反馈。</p>
+                
+                <p>本次论坛主题为"自然与科技的融合：宠物健康的未来趋势"，吸引了来自30多个国家的300余名宠物健康行业专家参与。我们的创始人李总在论坛上发表了题为《传统中医理念在现代宠物护理中的应用》的主题演讲，详细介绍了派择自然如何将中国传统医学理念与现代科技相结合，开发出一系列创新的宠物健康产品。</p>
+                
+                <p>在产品展示环节，我们的"花精舒缓系列"和"中草药修护系列"受到了与会专家的高度评价。多位国际知名兽医学家对我们的产品配方表示了浓厚兴趣，并提出了进一步合作研发的可能性。</p>
+                
+                <p>此次参与国际论坛不仅提升了派择自然在全球宠物健康市场的品牌知名度，也为我们带来了宝贵的国际合作机会。论坛结束后，我们已与三家欧洲顶尖宠物医疗机构达成了初步合作意向，共同推进天然宠物护理产品的研发和市场推广。</p>
+                
+                <div class="article-navigation">
+                    <a href="#" class="prev-article-btn" onclick="showPrevArticle(4)">← 上一篇</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="article-view" id="article-5">
+            <button class="back-btn" onclick="backToList()">← 返回列表</button>
+            <div class="article-header">
+                <h1 class="article-title">新产品发布：花精系列护理液</h1>
+                <p class="article-date">2025/12/05 14:20:15</p>
+                <img src="image/news1.png" alt="花精系列护理液" class="article-image">
+            </div>
+            <div class="article-content">
+                <p>派择自然近日隆重推出全新花精系列宠物护理液。这一系列产品采用了多种珍贵花卉精华，通过特殊提取工艺保留了天然成分的活性。经过六个月的临床试验，证明该系列产品对缓解宠物皮肤过敏、改善毛发质量有显著效果。新产品将于下月正式上市，敬请期待。</p>
+                
+                <p>花精系列护理液是派择自然研发团队历时两年潜心研发的成果。该系列包含三款主打产品：舒缓修护液、毛发亮泽液和敏感肌护理液。每款产品都针对宠物的不同皮肤和毛发问题，提供精准有效的解决方案。</p>
+                
+                <p>与市场上常见的化学成分宠物护理产品不同，花精系列护理液采用100%天然花卉精华，不含任何合成防腐剂、香料和色素。核心成分包括薰衣草、洋甘菊、金盏花和玫瑰等珍贵花卉的精华，通过专利低温提取工艺，最大限度地保留了活性成分。</p>
+                
+                <p>在为期六个月的临床试验中，超过80%的宠物在使用花精系列护理液后，皮肤过敏症状得到明显改善，毛发质量显著提升。尤其是对于长期困扰宠物的皮肤瘙痒、红肿和脱毛等问题，该系列产品展现出了卓越的治疗效果。</p>
+                
+                <p>花精系列护理液将于下月在全国各大宠物医院和派择自然官方渠道正式上市。作为新品推广活动的一部分，我们将在北京、上海、广州等城市举办产品体验会，欢迎宠物主人和宠物医生前来参与。</p>
+                
+                <div class="article-navigation">
+                    <a href="#" class="prev-article-btn" onclick="showPrevArticle(5)">← 上一篇</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="article-view" id="article-6">
+            <button class="back-btn" onclick="backToList()">← 返回列表</button>
+            <div class="article-header">
+                <h1 class="article-title">培训讲座：中医理念在宠物护理中的应用</h1>
+                <p class="article-date">2025/11/28 16:40:38</p>
+                <img src="image/news1.png" alt="中医理念宠物护理培训" class="article-image">
+            </div>
+            <div class="article-content">
+                <p>本月初，派择自然在深圳总部举办了一场面向宠物医院的专业培训讲座，主题为"中医理念在现代宠物护理中的应用"。来自全国各地的50余名宠物医生参加了此次活动。讲座中，我们的中医专家团队详细介绍了如何将传统中医理念与现代宠物医学结合，为宠物提供更全面的健康解决方案。</p>
+                
+                <p>此次培训讲座由派择自然首席研发专家张教授主讲，他是国内知名的宠物中医学专家，拥有30多年的中医研究和临床经验。张教授系统地介绍了中医理论在宠物健康中的应用原理，包括阴阳五行、脏腑理论以及常见中药材在宠物疾病治疗中的适应症和禁忌。</p>
+                
+                <p>讲座分为理论和实践两个部分。在理论部分，张教授详细讲解了不同体质宠物的辨识方法，以及相应的调理方案。实践部分则包括中药外敷剂的制作演示，以及针对常见宠物皮肤问题的诊断与治疗案例分析。</p>
+                
+                <p>参与此次培训的宠物医生纷纷表示，中医理念为宠物健康管理提供了全新视角，特别是对于一些西医难以有效治疗的慢性疾病，中医方法往往能提供令人满意的解决方案。多位医生现场与我们达成了合作意向，计划在其医院引入派择自然的中医理念宠物护理产品。</p>
+                
+                <p>基于此次培训的成功，派择自然计划在未来半年内，在北京、上海、广州等城市陆续开展类似的培训活动，进一步推广中医理念在宠物护理领域的应用，为更多宠物提供自然、安全、有效的健康解决方案。</p>
+                
+                <div class="article-navigation">
+                    <a href="#" class="prev-article-btn" onclick="showPrevArticle(6)">← 上一篇</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚前的分隔线 -->
+    <div class="page-divider"></div>
+
+    <!-- 页脚区域 -->
+    <footer class="footer-wrapper">
+        <div class="footer-top-section">
+            <div class="footer-logo-container">
+                <img src="image/log3.png" alt="派则自然" class="footer-logo-white">
+                <div class="footer-slogan">从自然中寻找答案</div>
+            </div>
+        </div>
+        
+        <div class="footer-main-section">
+            <div class="footer-column contact-column">
+                <h3>联系我们</h3>
+                <p>地址：深圳市宝安区海秀路黄金台工业区2-2105</p>
+                <p>电话：400-1199-631</p>
+                <p>邮箱：petandnature@163.com</p>
+            </div>
+            
+            <div class="footer-column follow-column">
+                <h3>关注我们</h3>
+                <p>小红书：</p>
+                <p>公众号：</p>
+            </div>
+            
+            <div class="footer-column subscribe-column">
+                <h3>邮件订阅</h3>
+                <div class="subscribe-form">
+                    <input type="email" placeholder="请输入您的邮箱">
+                    <button type="submit">点击此处订阅</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>PET&NATURE深圳派自然宠物用品有限责任公司 浙ICP备202310578号-2</p>
+        </div>
+    </footer>
+
+    <script>
+        // 显示文章详情
+        document.querySelectorAll('.news-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const articleId = this.getAttribute('data-id');
+                showArticle(articleId);
+            });
+        });
+        
+        function showArticle(id) {
+            // 隐藏新闻列表
+            document.querySelector('.news-list').classList.add('hidden');
+            
+            // 显示对应的文章
+            document.querySelectorAll('.article-view').forEach(article => {
+                article.classList.remove('active');
+            });
+            document.getElementById('article-' + id).classList.add('active');
+            
+            // 滚动到顶部
+            window.scrollTo(0, 0);
+        }
+        
+        // 返回新闻列表
+        function backToList() {
+            // 隐藏所有文章
+            document.querySelectorAll('.article-view').forEach(article => {
+                article.classList.remove('active');
+            });
+            
+            // 显示新闻列表
+            document.querySelector('.news-list').classList.remove('hidden');
+            
+            // 滚动到顶部
+            window.scrollTo(0, 0);
+        }
+        
+        // 显示上一篇文章
+        function showPrevArticle(currentArticleId) {
+            // 计算上一篇文章的ID
+            let prevArticleId = currentArticleId - 1;
+            
+            // 如果当前是第一篇文章，则上一篇是最后一篇
+            if (prevArticleId < 1) {
+                const totalArticles = document.querySelectorAll('.article-view').length;
+                prevArticleId = totalArticles;
+            }
+            
+            // 隐藏当前文章
+            document.getElementById('article-' + currentArticleId).classList.remove('active');
+            
+            // 显示上一篇文章
+            document.getElementById('article-' + prevArticleId).classList.add('active');
+            
+            // 滚动到顶部
+            window.scrollTo(0, 0);
+            
+            // 阻止默认事件
+            return false;
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品控 - 派择自然</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 品控页面特定样式 */
+        .quality-control-page {
+            padding: 40px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #f9f5e9;
+        }
+        
+        .page-title {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 500;
+            text-align: right;
+        }
+        
+        .page-divider-line {
+            height: 1px;
+            background-color: #333;
+            margin: 20px 0 40px;
+            width: 100%;
+        }
+        
+        .quality-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-align: justify;
+            max-width: 80%;
+            margin-left: auto;
+        }
+        
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .certification-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .certification-icon {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 15px;
+            object-fit: contain;
+        }
+        
+        .certification-name {
+            font-size: 16px;
+            color: #8cc63f;
+            font-weight: normal;
+        }
+        
+        .factory-image {
+            text-align: center;
+            margin: 40px 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .factory-image img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="image/log3.png" alt="派则自然">
+            <span>派择自然</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html#about">品牌简介</a></li>
+                <li><a href="chanpin.html">产品理念</a></li>
+                <li><a href="pinkong.html" class="active">品控</a></li>
+                <li><a href="#news">新闻资讯</a></li>
+                <li><a href="#contact">关于我们</a></li>
+            </ul>
+        </nav>
+        <div class="user-section">
+            <span>¥0.00</span>
+            <a href="#cart" class="cart">账户</a>
+        </div>
+    </header>
+
+    <div class="quality-control-page">
+        <h1 class="page-title">品控</h1>
+        <div class="page-divider-line"></div>
+        
+        <div class="quality-text">
+            <p>我们采用用一流的原料，一流的工艺，生产健康一流的产品。这些产品能够广泛的在全球多数国家销出，并被大众认可。</p>
+            <p>因此我们押重重点选择优质可靠的产品原料，先进的生产工艺，卫生可靠的生产环境。所生产的产品，不仅要对宠物健康真正有益，还要经得起各种标准的检验。</p>
+        </div>
+        
+        <div class="certifications-grid">
+            <div class="certification-item">
+                <img src="image/pinkonglog.png" alt="GMP认证" class="certification-icon">
+                <div class="certification-name">药品生产认证</div>
+            </div>
+            <div class="certification-item">
+                <img src="image/pinkonglog.png" alt="ISO认证" class="certification-icon">
+                <div class="certification-name">ISO认证</div>
+            </div>
+            <div class="certification-item">
+                <img src="image/pinkonglog.png" alt="FDA认证" class="certification-icon">
+                <div class="certification-name">美国FDA认证</div>
+            </div>
+            <div class="certification-item">
+                <img src="image/pinkonglog.png" alt="CE认证" class="certification-icon">
+                <div class="certification-name">CE认证</div>
+            </div>
+            <div class="certification-item">
+                <img src="image/pinkonglog.png" alt="GMPC认证" class="certification-icon">
+                <div class="certification-name">化妆品治疗认证</div>
+            </div>
+            <div class="certification-item">
+                <img src="image/pinkonglog.png" alt="EFSA认证" class="certification-icon">
+                <div class="certification-name">欧盟食品认证</div>
+            </div>
+        </div>
+        
+        <div class="factory-image">
+            <img src="image/狗.png" alt="生产工厂">
+        </div>
+    </div>
+
+    <!-- 页脚前的分隔线 -->
+    <div class="page-divider"></div>
+
+    <!-- 页脚区域 -->
+    <footer class="footer-wrapper">
+        <div class="footer-top-section">
+            <div class="footer-logo-container">
+                <img src="image/log3.png" alt="派则自然" class="footer-logo-white">
+                <div class="footer-slogan">从自然中寻找答案</div>
+            </div>
+        </div>
+        
+        <div class="footer-main-section">
+            <div class="footer-column contact-column">
+                <h3>联系我们</h3>
+                <p>地址：深圳市宝安区海秀路黄金台工业区2-2105</p>
+                <p>电话：400-1199-631</p>
+                <p>邮箱：petandnature@163.com</p>
+            </div>
+            
+            <div class="footer-column follow-column">
+                <h3>关注我们</h3>
+                <p>小红书：</p>
+                <p>公众号：</p>
+            </div>
+            
+            <div class="footer-column subscribe-column">
+                <h3>邮件订阅</h3>
+                <div class="subscribe-form">
+                    <input type="email" placeholder="请输入您的邮箱">
+                    <button type="submit">点击此处订阅</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>PET&NATURE深圳派自然宠物用品有限责任公司 浙ICP备202310578号-2</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

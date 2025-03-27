@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌理念 - 派择自然</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 品牌理念页面特定样式 */
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f5e9;
+        }
+        
+        .brand-philosophy-page {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: #f9f5e9;
+            position: relative;
+            padding: 40px 5% 80px;
+            width: 90%;
+        }
+        
+        .page-title {
+            font-size: 38px;
+            color: #333;
+            margin: 0 0 15px 0;
+            font-weight: 500;
+            text-align: left;
+        }
+        
+        .page-divider-line {
+            height: 1px;
+            background: linear-gradient(to right, #333, transparent);
+            margin: 0 0 30px 0;
+            width: 100%;
+        }
+        
+        /* 图片样式 */
+        .banner-container {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 15px;
+            background-color: transparent;
+        }
+        
+        .banner-image {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .brand-image-caption {
+            text-align: right;
+            font-size: 14px;
+            color: #666;
+            margin: 10px 0 40px;
+            padding-right: 20px;
+        }
+        
+        .philosophy-section {
+            margin: 20px 0 50px;
+            padding: 0 20px;
+            width: 90%;
+        }
+        
+        .philosophy-title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 25px;
+            text-align: left;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .philosophy-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background-color: #8cc63f;
+        }
+        
+        .philosophy-text {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 15px;
+            text-align: justify;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        
+        /* 专家团队成员样式 */
+        .expert-team-section {
+            margin: 60px 0;
+            width: 100%;
+        }
+        
+        .expert-team-header {
+            background-color: #9ed45a;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .expert-team-header h2 {
+            font-size: 32px;
+            color: #333;
+            margin: 0 0 5px;
+            font-weight: 500;
+        }
+        
+        .expert-team-header p {
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        
+        .expert-members-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px 60px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .expert-members-grid .team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .expert-members-grid .team-member:hover {
+            transform: translateY(-8px);
+        }
+        
+        .expert-members-grid .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #9ed45a;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .expert-members-grid .member-name {
+            font-size: 20px;
+            font-weight: 500;
+            margin: 5px 0 10px;
+            color: #333;
+        }
+        
+        .expert-members-grid .learn-more-btn {
+            font-size: 14px;
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-top: 10px;
+        }
+
+        .team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        
+        .member-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            background-color: #8cc63f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .member-name {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .learn-more-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            border: 1px solid #8cc63f;
+            border-radius: 30px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .learn-more-btn:hover {
+            background-color: #8cc63f;
+            color: white;
+        }
+        
+        /* 专家预览区域样式 */
+        .experts-preview {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 900px;
+            margin: 60px auto;
+            background-color: #fff9ed;
+            padding: 50px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+        }
+        
+        .expert-preview-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .expert-preview-item:hover {
+            transform: translateY(-8px);
+        }
+        
+        .expert-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #a2d55a;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .expert-name {
+            font-size: 22px;
+            color: #333;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+        
+        .expert-btn {
+            display: inline-block;
+            padding: 8px 25px;
+            border: 1px solid #8cc63f;
+            border-radius: 30px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 15px;
+            background-color: #fff;
+        }
+        
+        .expert-btn:hover {
+            background-color: #8cc63f;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 头部导航样式 */
+        header {
+            background-color: rgb(121,171,12);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .footer-slogan {
+            background-color: rgb(121,171,12);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .footer-top-section {
+            background-color: rgb(121,171,12);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="image/log3.png" alt="派则自然">
+            <span>派择自然</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="pinpaill.html" class="active">品牌理念</a></li>
+                <li><a href="chanpin.html">产品理念</a></li>
+                <li><a href="hezuost.html">合作伙伴</a></li>
+                <li><a href="news.html">新闻资讯</a></li>
+                <li><a href="#contact">关于我们</a></li>
+            </ul>
+        </nav>
+        <div class="user-section">
+            <span>¥0.00</span>
+            <img src="image/购物车.png" alt="购物车" class="cart-icon">
+            <a href="#account">账户</a>
+        </div>
+    </header>
+
+    <div class="brand-philosophy-page">
+        <h1 class="page-title">品牌理念</h1>
+        <div class="page-divider-line"></div>
+        
+        <div class="banner-container">
+            <img src="./image/ppll图一.png" alt="派择自然品牌形象" class="banner-image">
+        </div>
+        
+        <p class="brand-image-caption">我们没有香奈儿，却把心奉献与自然共生——王东晖</p>
+        
+        <div class="philosophy-section">
+            <h2 class="philosophy-title">起源</h2>
+            <div class="philosophy-text">
+                <p>"派择自然"LOGO诞生深圳证券...</p>
+                <p>"派择自然"取自于创始团队率领研究构思议侃得道"派遣AUFET"，是站在皮肤窗口内外中，将人体全系统的的健康奉为核心，已经不是简简单单是消费行为，已经不能单纯的面对窗口的器官，像窝(AUFET)这样皮层下器官如之有效的器官法，然而，我们认为，要应对窗物什自己多的内专业体，必须有一个专业的团队来把把"自然方式"</p>
+                <p>呈此，"派择自然"应运而生。</p>
+            </div>
+        </div>
+        
+        <div class="philosophy-section">
+            <h2 class="philosophy-title">信念</h2>
+            <div class="philosophy-text">
+                <p>从分子角度而言，分子间的相互影响，本质上来说，要的是化学健的新整通弧，在这个互联网世界中每年发生几，轻松可能是假评价，给猪穿上金箍，</p>
+                <p>任何一种物质都有己性与弹性和潮性，一纯一稀，一白一阴，均可以很为质感的载体，毛发的物质，气味，声音，电，地，情绪这些我有值观。</p>
+                <p>反柴道者可以是生物体本质，产生收集，我们派络自然与中在有很多名于实际与心理事件的中断视觉面部，亦皆有了应视点。</p>
+            </div>
+        </div>
+        
+        <div class="philosophy-section">
+            <h2 class="philosophy-title">使命</h2>
+            <div class="philosophy-text">
+                <p>从自然界中探索的四前过宠物身心生理机锻，不来开发百合宠物身体营眷的治疗与预见产品，解放认把它为代表的宠物产品应用期待，提升家族篇阐。</p>
+            </div>
+        </div>
+        
+        <!-- 添加上方的两个专家团成员 -->
+        <div class="experts-preview">
+            <div class="expert-preview-item">
+                <div class="expert-circle"></div>
+                <h3 class="expert-name">高智攀</h3>
+                <a href="#" class="expert-btn">了解更多 ></a>
+            </div>
+            <div class="expert-preview-item">
+                <div class="expert-circle"></div>
+                <h3 class="expert-name">屈小楠</h3>
+                <a href="#" class="expert-btn">了解更多 ></a>
+            </div>
+        </div>
+        
+        <!-- 专家团队成员部分 -->
+        <div class="expert-team-section">
+            <div class="expert-team-header">
+                <h2>专家团成员</h2>
+                <p>PROFESSIONAL NUMBER</p>
+            </div>
+            
+            <div class="expert-members-grid">
+                <div class="expert-preview-item">
+                    <div class="expert-circle"></div>
+                    <h3 class="expert-name">高智攀</h3>
+                    <a href="#" class="expert-btn">了解更多 ></a>
+                </div>
+                <div class="expert-preview-item">
+                    <div class="expert-circle"></div>
+                    <h3 class="expert-name">屈小楠</h3>
+                    <a href="#" class="expert-btn">了解更多 ></a>
+                </div>
+                <div class="expert-preview-item">
+                    <div class="expert-circle"></div>
+                    <h3 class="expert-name">高智攀</h3>
+                    <a href="#" class="expert-btn">了解更多 ></a>
+                </div>
+                <div class="expert-preview-item">
+                    <div class="expert-circle"></div>
+                    <h3 class="expert-name">屈小楠</h3>
+                    <a href="#" class="expert-btn">了解更多 ></a>
+                </div>
+                <div class="expert-preview-item">
+                    <div class="expert-circle"></div>
+                    <h3 class="expert-name">高智攀</h3>
+                    <a href="#" class="expert-btn">了解更多 ></a>
+                </div>
+                <div class="expert-preview-item">
+                    <div class="expert-circle"></div>
+                    <h3 class="expert-name">屈小楠</h3>
+                    <a href="#" class="expert-btn">了解更多 ></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚前的分隔线 -->
+    <div class="page-divider"></div>
+
+    <!-- 页脚区域 -->
+    <footer class="footer-wrapper">
+        <div class="footer-top-section">
+            <div class="footer-logo-container">
+                <img src="image/log3.png" alt="派则自然" class="footer-logo-white">
+                <div class="footer-slogan">从自然中寻找答案</div>
+            </div>
+        </div>
+        
+        <div class="footer-main-section">
+            <div class="footer-column contact-column">
+                <h3>联系我们</h3>
+                <p>地址：深圳市宝安区海秀路黄金台工业区2-2105</p>
+                <p>电话：400-1199-631</p>
+                <p>邮箱：petandnature@163.com</p>
+            </div>
+            
+            <div class="footer-column follow-column">
+                <h3>关注我们</h3>
+                <p>小红书：</p>
+                <p>公众号：</p>
+            </div>
+            
+            <div class="footer-column subscribe-column">
+                <h3>邮件订阅</h3>
+                <div class="subscribe-form">
+                    <input type="email" placeholder="请输入您的邮箱">
+                    <button type="submit">点击此处订阅</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>PET&NATURE深圳派自然宠物用品有限责任公司 浙ICP备202310578号-2</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
