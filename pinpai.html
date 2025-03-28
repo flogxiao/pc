@@ -451,12 +451,25 @@
             if (brand === 'sbr') {
                 brandHero.src = "image/sbr.png";
                 document.getElementById('sbr-details').style.display = 'block';
+                document.title = "赛宝柔®品牌专区 - 派择自然";
             } else if (brand === 'wc') {
                 brandHero.src = "image/wc.png";
                 document.getElementById('wc-details').style.display = 'block';
+                document.title = "哇宠MUPET®品牌专区 - 派择自然";
             } else if (brand === 'dml') {
                 brandHero.src = "image/dml.png";
                 document.getElementById('dml-details').style.display = 'block';
+                document.title = "德玛利®品牌专区 - 派择自然";
+            } else if (brand === 'food1' || brand === 'food2' || brand === 'food3') {
+                // 处理食物FOOD区域
+                brandHero.src = "image/sw.png"; // 所有食物区域使用相同的图片
+                document.title = "食物FOOD专区 - 派择自然";
+                
+                // 更改产品展示标题
+                var sectionTitle = document.querySelector('.section-title h2');
+                if (sectionTitle) {
+                    sectionTitle.textContent = "食物产品系列";
+                }
             }
         });
     </script>
