@@ -37,7 +37,7 @@
             height: 100%;
             display: flex;
             align-items: center;
-            background: linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+            background: none;
             padding: 0 5%;
         }
         
@@ -73,6 +73,9 @@
             grid-template-columns: repeat(6, 1fr);
             gap: 20px;
             margin-bottom: 50px;
+            background-color: #fbf6e5;
+            padding: 40px;
+            border-radius: 0;
         }
         
         .product-grid-item {
@@ -88,20 +91,20 @@
         }
         
         .product-grid-image {
-            width: 120px;
-            height: 150px;
-            background-color: white;
-            border-radius: 10px;
+            width: 70px;
+            height: 120px;
+            background-color: transparent;
+            border-radius: 0;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: none;
             margin-bottom: 10px;
         }
         
         .product-grid-image img {
-            width: 80%;
+            width: 100%;
             height: auto;
         }
         
@@ -136,13 +139,30 @@
             width: 100px;
             margin: 0 auto;
         }
+
+        /* 头部导航样式 */
+        header {
+            background-color: rgb(121,171,12);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="image/log3.png" alt="派则自然">
-            <span>派择自然</span>
+            <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                <img src="image/log3.png" alt="派则自然">
+                <span>派择自然</span>
+            </a>
         </div>
         <nav>
             <ul>
@@ -150,7 +170,7 @@
                 <li><a href="chanpin.html">产品理念</a></li>
                 <li><a href="chanpin.html">品控</a></li>
                 <li><a href="#news">新闻资讯</a></li>
-                <li><a href="#contact">关于我们</a></li>
+                <li><a href="pinpaill.html">关于我们</a></li>
             </ul>
         </nav>
         <div class="user-section">
@@ -163,11 +183,34 @@
         <div class="brand-hero">
             <img src="image/ppll图一.png" alt="品牌理念">
             <div class="brand-hero-content">
-                <div class="brand-hero-text">
-                    <h1>赛宝柔<sup>®</sup> 品牌专区</h1>
-                    <p>精选天然精油，呵护宠物健康</p>
-                    <a href="#" class="brand-hero-btn">了解更多 ></a>
-                </div>
+                <!-- 删除了标题、描述和按钮 -->
+            </div>
+        </div>
+
+        <!-- 品牌详情区域，默认隐藏 -->
+        <div id="brandDetailsSection" style="display: none; margin-bottom: 40px; padding: 20px; background-color: #f0f7e6; border-radius: 15px;">
+            <!-- 赛宝柔品牌故事 -->
+            <div id="sbr-details">
+                <h2 style="color: #3e8828; margin-bottom: 15px;">赛宝柔®品牌故事</h2>
+                <p style="line-height: 1.8; font-size: 16px; color: #555; margin-bottom: 15px;">赛宝柔®源自对宠物健康与自然疗愈的深度研究，我们专注于开发纯天然精油产品，为宠物提供无刺激、无副作用的护理解决方案。</p>
+                <p style="line-height: 1.8; font-size: 16px; color: #555; margin-bottom: 15px;">我们的精油成分全部源自天然植物提取，不含任何合成香料、防腐剂和人工添加剂，致力于为宠物创造更健康、更自然的生活环境。</p>
+                <p style="line-height: 1.8; font-size: 16px; color: #555;">赛宝柔®产品系列涵盖皮肤护理、情绪稳定、驱虫防护等多个领域，通过芳香疗法的方式为宠物提供全面呵护。</p>
+            </div>
+            
+            <!-- 哇宠MUPET品牌故事 -->
+            <div id="wc-details" style="display: none;">
+                <h2 style="color: #3e8828; margin-bottom: 15px;">哇宠MUPET®品牌故事</h2>
+                <p style="line-height: 1.8; font-size: 16px; color: #555; margin-bottom: 15px;">哇宠MUPET®是我们专为年轻宠物家庭设计的活力品牌，致力于将玩乐与健康护理相结合，为宠物带来快乐同时保障其健康。</p>
+                <p style="line-height: 1.8; font-size: 16px; color: #555; margin-bottom: 15px;">所有哇宠MUPET®产品都采用环保材料和安全配方，确保宠物在使用过程中的安全，同时兼顾趣味性和实用性。</p>
+                <p style="line-height: 1.8; font-size: 16px; color: #555;">哇宠MUPET®坚信健康的宠物生活应该充满乐趣，我们不断创新，开发出能够满足宠物多样化需求的产品系列。</p>
+            </div>
+            
+            <!-- 德玛利品牌故事 -->
+            <div id="dml-details" style="display: none;">
+                <h2 style="color: #3e8828; margin-bottom: 15px;">德玛利®品牌故事</h2>
+                <p style="line-height: 1.8; font-size: 16px; color: #555; margin-bottom: 15px;">德玛利®源自德国精湛工艺与中国传统草药智慧的完美结合，多年来专注于宠物皮肤健康的深度研究。</p>
+                <p style="line-height: 1.8; font-size: 16px; color: #555; margin-bottom: 15px;">采用先进萃取技术和独特配方，德玛利®研发的产品对宠物皮肤问题有着显著的改善效果，特别是在敏感性皮肤和特殊皮肤状况方面。</p>
+                <p style="line-height: 1.8; font-size: 16px; color: #555;">每款德玛利®产品都经过严格的实验室测试和临床验证，确保既有效又安全，受到众多宠物医院和专业宠物美容师的推荐。</p>
             </div>
         </div>
 
@@ -179,156 +222,156 @@
         <div class="product-grid">
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="桃子油">
+                    <img src="image/瓶子.png" alt="佛手柑">
                 </div>
-                <p>桃子油</p>
+                <p>佛手柑</p>
             </div>
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="小花茴香">
+                    <img src="image/瓶子.png" alt="小花茉莉">
                 </div>
-                <p>小花茴香</p>
+                <p>小花茉莉</p>
             </div>
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="茴香芹三叶">
+                    <img src="image/瓶子.png" alt="玫瑰天竺葵">
                 </div>
-                <p>茴香芹三叶</p>
+                <p>玫瑰天竺葵</p>
             </div>
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="柳丁黄花草">
+                    <img src="image/瓶子.png" alt="醒目薰衣草">
                 </div>
-                <p>柳丁黄花草</p>
+                <p>醒目薰衣草</p>
             </div>
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="马鞭草花叶">
+                    <img src="image/瓶子.png" alt="玫瑰花水">
                 </div>
-                <p>马鞭草花叶</p>
+                <p>玫瑰花水</p>
             </div>
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="椰子黄花草">
+                    <img src="image/瓶子.png" alt="茶树精油">
                 </div>
-                <p>椰子黄花草</p>
-            </div>
-        </div>
-
-        <div class="product-grid">
-            <div class="product-grid-item">
-                <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="桃子油">
-                </div>
-                <p>桃子油</p>
-            </div>
-            <div class="product-grid-item">
-                <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="小花茴香">
-                </div>
-                <p>小花茴香</p>
-            </div>
-            <div class="product-grid-item">
-                <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="茴香芹三叶">
-                </div>
-                <p>茴香芹三叶</p>
-            </div>
-            <div class="product-grid-item">
-                <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="柳丁黄花草">
-                </div>
-                <p>柳丁黄花草</p>
-            </div>
-            <div class="product-grid-item">
-                <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="马鞭草花叶">
-                </div>
-                <p>马鞭草花叶</p>
-            </div>
-            <div class="product-grid-item">
-                <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="椰子黄花草">
-                </div>
-                <p>椰子黄花草</p>
+                <p>茶树精油</p>
             </div>
         </div>
 
         <div class="product-grid">
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="桃子油">
+                    <img src="image/瓶子.png" alt="尤加利">
                 </div>
-                <p>桃子油</p>
+                <p>尤加利</p>
             </div>
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="小花茴香">
+                    <img src="image/瓶子.png" alt="维特维">
                 </div>
-                <p>小花茴香</p>
+                <p>维特维</p>
             </div>
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="茴香芹三叶">
+                    <img src="image/瓶子.png" alt="依兰依兰">
                 </div>
-                <p>茴香芹三叶</p>
+                <p>依兰依兰</p>
             </div>
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="柳丁黄花草">
+                    <img src="image/瓶子.png" alt="柠檬草">
                 </div>
-                <p>柳丁黄花草</p>
+                <p>柠檬草</p>
             </div>
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="马鞭草花叶">
+                    <img src="image/瓶子.png" alt="甜橙">
                 </div>
-                <p>马鞭草花叶</p>
+                <p>甜橙</p>
             </div>
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="椰子黄花草">
+                    <img src="image/瓶子.png" alt="白松香">
                 </div>
-                <p>椰子黄花草</p>
+                <p>白松香</p>
             </div>
         </div>
 
         <div class="product-grid">
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="桃子油">
+                    <img src="image/瓶子.png" alt="迷迭香">
                 </div>
-                <p>桃子油</p>
+                <p>迷迭香</p>
             </div>
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="小花茴香">
+                    <img src="image/瓶子.png" alt="薄荷">
                 </div>
-                <p>小花茴香</p>
+                <p>薄荷</p>
             </div>
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="茴香芹三叶">
+                    <img src="image/瓶子.png" alt="藏红花">
                 </div>
-                <p>茴香芹三叶</p>
+                <p>藏红花</p>
             </div>
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="柳丁黄花草">
+                    <img src="image/瓶子.png" alt="檀香">
                 </div>
-                <p>柳丁黄花草</p>
+                <p>檀香</p>
             </div>
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="马鞭草花叶">
+                    <img src="image/瓶子.png" alt="沉香">
                 </div>
-                <p>马鞭草花叶</p>
+                <p>沉香</p>
             </div>
             <div class="product-grid-item">
                 <div class="product-grid-image">
-                    <img src="image/瓶子.png" alt="椰子黄花草">
+                    <img src="image/瓶子.png" alt="檀香木">
                 </div>
-                <p>椰子黄花草</p>
+                <p>檀香木</p>
+            </div>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-grid-item">
+                <div class="product-grid-image">
+                    <img src="image/瓶子.png" alt="茉莉花茶">
+                </div>
+                <p>茉莉花茶</p>
+            </div>
+            <div class="product-grid-item">
+                <div class="product-grid-image">
+                    <img src="image/瓶子.png" alt="花梨木">
+                </div>
+                <p>花梨木</p>
+            </div>
+            <div class="product-grid-item">
+                <div class="product-grid-image">
+                    <img src="image/瓶子.png" alt="玫瑰">
+                </div>
+                <p>玫瑰</p>
+            </div>
+            <div class="product-grid-item">
+                <div class="product-grid-image">
+                    <img src="image/瓶子.png" alt="葡萄柚">
+                </div>
+                <p>葡萄柚</p>
+            </div>
+            <div class="product-grid-item">
+                <div class="product-grid-image">
+                    <img src="image/瓶子.png" alt="胡椒薄荷">
+                </div>
+                <p>胡椒薄荷</p>
+            </div>
+            <div class="product-grid-item">
+                <div class="product-grid-image">
+                    <img src="image/瓶子.png" alt="石榴籽油">
+                </div>
+                <p>石榴籽油</p>
             </div>
         </div>
     </div>
@@ -374,6 +417,49 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // 确保DOM加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM 加载完成");
+            // 详情区域始终隐藏
+            const detailsSection = document.getElementById('brandDetailsSection');
+            if (detailsSection) {
+                detailsSection.style.display = 'none';
+            }
+
+            // 获取URL参数
+            function getParameterByName(name, url = window.location.href) {
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+
+            // 获取品牌参数
+            var brand = getParameterByName('brand') || 'sbr'; // 默认为赛宝柔
+            var brandHero = document.querySelector('.brand-hero img');
+            
+            // 隐藏所有品牌详情
+            document.getElementById('sbr-details').style.display = 'none';
+            document.getElementById('wc-details').style.display = 'none';
+            document.getElementById('dml-details').style.display = 'none';
+            
+            console.log("品牌参数:", brand);
+            // 根据品牌参数设置图片
+            if (brand === 'sbr') {
+                brandHero.src = "image/sbr.png";
+                document.getElementById('sbr-details').style.display = 'block';
+            } else if (brand === 'wc') {
+                brandHero.src = "image/wc.png";
+                document.getElementById('wc-details').style.display = 'block';
+            } else if (brand === 'dml') {
+                brandHero.src = "image/dml.png";
+                document.getElementById('dml-details').style.display = 'block';
+            }
+        });
+    </script>
     <style>
         /* 品牌专区页面整体优化 */
         body {
@@ -391,7 +477,7 @@
         }
 
         .footer-top-section {
-            background-color: #8cc63f;
+            background-color: rgb(121,171,12);
             padding: 40px 0;
             text-align: center;
         }
@@ -405,7 +491,6 @@
 
         .footer-logo-white {
             height: 70px;
-            filter: brightness(0) invert(1);
             margin-bottom: 15px;
         }
 

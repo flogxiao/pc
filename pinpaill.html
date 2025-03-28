@@ -17,7 +17,7 @@
         
         .brand-philosophy-page {
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 80px auto 0; /* 添加顶部边距 */
             background-color: #f9f5e9;
             position: relative;
             padding: 40px 5% 80px;
@@ -132,7 +132,7 @@
         .expert-members-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 50px 60px;
+            gap: 60px;
             max-width: 900px;
             margin: 0 auto;
             padding: 30px;
@@ -220,14 +220,12 @@
         /* 专家预览区域样式 */
         .experts-preview {
             display: flex;
-            justify-content: space-around;
-            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 60px;
             max-width: 900px;
             margin: 60px auto;
-            background-color: #fff9ed;
-            padding: 50px 0;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+            padding: 50px 20px;
         }
         
         .expert-preview-item {
@@ -235,20 +233,17 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .expert-preview-item:hover {
-            transform: translateY(-8px);
+            width: 300px;
+            position: relative;
+            margin-bottom: 40px;
         }
         
         .expert-circle {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             background-color: #a2d55a;
             margin-bottom: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
         
         .expert-name {
@@ -259,6 +254,7 @@
         }
         
         .expert-btn {
+            cursor: pointer;
             display: inline-block;
             padding: 8px 25px;
             border: 1px solid #8cc63f;
@@ -267,14 +263,64 @@
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 14px;
-            margin-top: 15px;
+            margin: 15px 0;
             background-color: #fff;
         }
         
         .expert-btn:hover {
             background-color: #8cc63f;
             color: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 专家详情样式 */
+        .expert-details {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+            border-radius: 0;
+            text-align: left;
+            display: none;
+            position: static;
+            box-shadow: none;
+        }
+
+        .expert-details p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 10px;
+            text-align: left;
+            padding: 0;
+        }
+
+        .expert-preview-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 300px;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        /* 专家团队成员网格布局 */
+        .expert-members-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .expert-members-grid .expert-preview-item {
+            width: 100%;
+        }
+
+        .expert-members-grid .expert-details {
+            grid-column: 1 / -1;
+            margin: 20px 0 40px;
         }
 
         /* 头部导航样式 */
@@ -304,13 +350,117 @@
         .footer-top-section {
             background-color: rgb(121,171,12);
         }
+
+        /* 添加内容区域的上边距 */
+        .content {
+            margin-top: 80px; /* 为固定导航栏留出空间 */
+        }
+
+        /* 专家详情弹窗样式 */
+        .expert-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .expert-modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 15px;
+            position: relative;
+            padding: 40px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s ease;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .expert-modal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .expert-modal-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #9ed45a;
+            margin-right: 40px;
+            flex-shrink: 0;
+        }
+
+        .expert-modal-info {
+            flex-grow: 1;
+        }
+
+        .expert-modal-info h2 {
+            font-size: 28px;
+            color: #333;
+            margin: 0 0 15px 0;
+            font-weight: 500;
+        }
+
+        .expert-modal-title {
+            font-size: 18px;
+            color: #666;
+            margin: 0;
+        }
+
+        .expert-modal-details {
+            padding: 0 20px;
+        }
+
+        .expert-modal-details h3 {
+            font-size: 20px;
+            color: #333;
+            margin: 30px 0 15px 0;
+            font-weight: 500;
+        }
+
+        .expert-modal-details p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+            margin: 0 0 25px 0;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="image/log3.png" alt="派则自然">
-            <span>派择自然</span>
+            <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                <img src="image/log3.png" alt="派则自然">
+                <span>派择自然</span>
+            </a>
         </div>
         <nav>
             <ul>
@@ -318,7 +468,7 @@
                 <li><a href="chanpin.html">产品理念</a></li>
                 <li><a href="hezuost.html">合作伙伴</a></li>
                 <li><a href="news.html">新闻资讯</a></li>
-                <li><a href="#contact">关于我们</a></li>
+                <li><a href="pinpaill.html">关于我们</a></li>
             </ul>
         </nav>
         <div class="user-section">
@@ -368,12 +518,20 @@
             <div class="expert-preview-item">
                 <div class="expert-circle"></div>
                 <h3 class="expert-name">高智攀</h3>
-                <a href="#" class="expert-btn">了解更多 ></a>
+                <a class="expert-btn" onclick="toggleExpertDetails(this)">了解更多 ></a>
+                <div class="expert-details" style="display: none;">
+                    <p>中国农业大学，动物医学专业学士，北京工商大学，广告学学士，执业兽医师，深圳比比宠物医院联合创始人，创业前，具有多年的宠物疾病诊疗经验，累计服务客户8万人，尤其擅长皮肤病的诊断治疗。</p>
+                    <p>开创了宠物皮肤病品牌"哇宠MUPET"，宠物粮食品牌"DERMALLY"等。</p>
+                </div>
             </div>
             <div class="expert-preview-item">
                 <div class="expert-circle"></div>
                 <h3 class="expert-name">屈小楠</h3>
-                <a href="#" class="expert-btn">了解更多 ></a>
+                <a class="expert-btn" onclick="toggleExpertDetails(this)">了解更多 ></a>
+                <div class="expert-details" style="display: none;">
+                    <p>中国农业大学，动物医学专业学士，北京工商大学，广告学学士，执业兽医师，深圳比比宠物医院联合创始人，创业前，具有多年的宠物疾病诊疗经验，累计服务客户8万人，尤其擅长皮肤病的诊断治疗。</p>
+                    <p>开创了宠物皮肤病品牌"哇宠MUPET"，宠物粮食品牌"DERMALLY"等。</p>
+                </div>
             </div>
         </div>
         
@@ -388,32 +546,56 @@
                 <div class="expert-preview-item">
                     <div class="expert-circle"></div>
                     <h3 class="expert-name">高智攀</h3>
-                    <a href="#" class="expert-btn">了解更多 ></a>
+                    <a class="expert-btn" onclick="toggleExpertDetails(this)">了解更多 ></a>
+                    <div class="expert-details" style="display: none;">
+                        <p>中国农业大学，动物医学专业学士，北京工商大学，广告学学士，执业兽医师，深圳比比宠物医院联合创始人，创业前，具有多年的宠物疾病诊疗经验，累计服务客户8万人，尤其擅长皮肤病的诊断治疗。</p>
+                        <p>开创了宠物皮肤病品牌"哇宠MUPET"，宠物粮食品牌"DERMALLY"等。</p>
+                    </div>
                 </div>
                 <div class="expert-preview-item">
                     <div class="expert-circle"></div>
                     <h3 class="expert-name">屈小楠</h3>
-                    <a href="#" class="expert-btn">了解更多 ></a>
+                    <a class="expert-btn" onclick="toggleExpertDetails(this)">了解更多 ></a>
+                    <div class="expert-details" style="display: none;">
+                        <p>中国农业大学，动物医学专业学士，北京工商大学，广告学学士，执业兽医师，深圳比比宠物医院联合创始人，创业前，具有多年的宠物疾病诊疗经验，累计服务客户8万人，尤其擅长皮肤病的诊断治疗。</p>
+                        <p>开创了宠物皮肤病品牌"哇宠MUPET"，宠物粮食品牌"DERMALLY"等。</p>
+                    </div>
                 </div>
                 <div class="expert-preview-item">
                     <div class="expert-circle"></div>
                     <h3 class="expert-name">高智攀</h3>
-                    <a href="#" class="expert-btn">了解更多 ></a>
+                    <a class="expert-btn" onclick="toggleExpertDetails(this)">了解更多 ></a>
+                    <div class="expert-details" style="display: none;">
+                        <p>中国农业大学，动物医学专业学士，北京工商大学，广告学学士，执业兽医师，深圳比比宠物医院联合创始人，创业前，具有多年的宠物疾病诊疗经验，累计服务客户8万人，尤其擅长皮肤病的诊断治疗。</p>
+                        <p>开创了宠物皮肤病品牌"哇宠MUPET"，宠物粮食品牌"DERMALLY"等。</p>
+                    </div>
                 </div>
                 <div class="expert-preview-item">
                     <div class="expert-circle"></div>
                     <h3 class="expert-name">屈小楠</h3>
-                    <a href="#" class="expert-btn">了解更多 ></a>
+                    <a class="expert-btn" onclick="toggleExpertDetails(this)">了解更多 ></a>
+                    <div class="expert-details" style="display: none;">
+                        <p>中国农业大学，动物医学专业学士，北京工商大学，广告学学士，执业兽医师，深圳比比宠物医院联合创始人，创业前，具有多年的宠物疾病诊疗经验，累计服务客户8万人，尤其擅长皮肤病的诊断治疗。</p>
+                        <p>开创了宠物皮肤病品牌"哇宠MUPET"，宠物粮食品牌"DERMALLY"等。</p>
+                    </div>
                 </div>
                 <div class="expert-preview-item">
                     <div class="expert-circle"></div>
                     <h3 class="expert-name">高智攀</h3>
-                    <a href="#" class="expert-btn">了解更多 ></a>
+                    <a class="expert-btn" onclick="toggleExpertDetails(this)">了解更多 ></a>
+                    <div class="expert-details" style="display: none;">
+                        <p>中国农业大学，动物医学专业学士，北京工商大学，广告学学士，执业兽医师，深圳比比宠物医院联合创始人，创业前，具有多年的宠物疾病诊疗经验，累计服务客户8万人，尤其擅长皮肤病的诊断治疗。</p>
+                        <p>开创了宠物皮肤病品牌"哇宠MUPET"，宠物粮食品牌"DERMALLY"等。</p>
+                    </div>
                 </div>
                 <div class="expert-preview-item">
                     <div class="expert-circle"></div>
                     <h3 class="expert-name">屈小楠</h3>
-                    <a href="#" class="expert-btn">了解更多 ></a>
+                    <a class="expert-btn" onclick="toggleExpertDetails(this)">了解更多 ></a>
+                    <div class="expert-details" style="display: none;">
+                        <p>中国农业大学，动物医学专业学士，北京工商大学，广告学学士，执业兽医师，深圳比比宠物医院联合创始人，创业前，具有多年的宠物疾病诊疗经验，累计服务客户8万人，尤其擅长皮肤病的诊断治疗。</p>
+                        <p>开创了宠物皮肤病品牌"哇宠MUPET"，宠物粮食品牌"DERMALLY"等。</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -459,6 +641,53 @@
         </div>
     </footer>
 
+    <!-- 专家详情弹窗 -->
+    <div class="expert-modal" id="expertModal">
+        <div class="expert-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="expert-modal-body">
+                <div class="expert-modal-header">
+                    <div class="expert-modal-photo"></div>
+                    <div class="expert-modal-info">
+                        <h2 class="expert-modal-name">高智攀</h2>
+                        <p class="expert-modal-title">首席专家</p>
+                    </div>
+                </div>
+                <div class="expert-modal-details">
+                    <h3>专业背景</h3>
+                    <p>从事宠物医疗行业20年，具有丰富的临床经验。专注于宠物皮肤科、内科疾病的诊断与治疗。</p>
+                    <h3>研究领域</h3>
+                    <p>宠物皮肤疾病、营养学、行为学</p>
+                    <h3>学术成就</h3>
+                    <p>发表论文30余篇，获得多项专利</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        // 专家详情切换函数
+        function toggleExpertDetails(button) {
+            // 获取下一个兄弟元素，即详情区域
+            const details = button.nextElementSibling;
+            
+            // 检查详情区域是否存在
+            if (details && details.classList.contains('expert-details')) {
+                // 如果详情区域当前是隐藏的
+                if (details.style.display === 'none' || !details.style.display) {
+                    // 显示详情区域
+                    details.style.display = 'block';
+                    // 更改按钮文字
+                    button.textContent = '收起 ∧';
+                } else {
+                    // 隐藏详情区域
+                    details.style.display = 'none';
+                    // 恢复按钮文字
+                    button.textContent = '了解更多 >';
+                }
+            }
+        }
+    </script>
 </body>
 </html> 

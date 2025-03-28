@@ -186,4 +186,33 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // 专家详情按钮点击事件
+    const expertBtns = document.querySelectorAll('.expert-btn');
+    
+    // 初始化时隐藏所有专家详情
+    document.querySelectorAll('.expert-details').forEach(detail => {
+        detail.style.display = 'none';
+    });
+    
+    expertBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // 获取当前专家的详情区域
+            const details = this.nextElementSibling;
+            
+            // 如果详情区域存在
+            if (details && details.classList.contains('expert-details')) {
+                // 切换当前详情的显示状态
+                if (details.style.display === 'none' || !details.style.display) {
+                    details.style.display = 'block';
+                    this.textContent = '收起 ∧';
+                } else {
+                    details.style.display = 'none';
+                    this.textContent = '了解更多 >';
+                }
+            }
+        });
+    });
 }); 
