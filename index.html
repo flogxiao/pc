@@ -33,6 +33,112 @@
         .footer-top-section {
             background-color: rgb(121,171,12);
         }
+
+        /* 轮播图样式 */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 500px; /* 根据您的需求调整高度 */
+            overflow: hidden;
+        }
+        
+        .slides-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform: scale(1.05);
+            transition: opacity 1.2s ease, transform 1.2s ease;
+            z-index: 1;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 2;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* 导航按钮样式 */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        .prev-btn {
+            left: 20px;
+        }
+        
+        .next-btn {
+            right: 20px;
+        }
+        
+        /* 指示点样式 */
+        .slide-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+        
+        .indicator {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .indicator.active {
+            background-color: white;
+        }
+
+        /* 添加滑动效果变体，会在JavaScript中动态应用 */
+        .slide.slide-left {
+            transform: translateX(-100%);
+        }
+        
+        .slide.slide-right {
+            transform: translateX(100%);
+        }
+        
+        .slide.active-from-left {
+            transform: translateX(0);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        
+        .slide.active-from-right {
+            transform: translateX(0);
+            transition: opacity 1s ease, transform 1s ease;
+        }
     </style>
 </head>
 <body>
@@ -59,11 +165,32 @@
         </div>
     </header>
 
-    <div class="slider-container">
-        <div class="slider">
-            <div class="slide">
-                <img src="image/轮播图.png" alt="轮播图">
+    <div class="hero-slider">
+        <div class="slides-container">
+            <div class="slide active">
+                <img src="image/轮播图.png" alt="轮播图1">
             </div>
+            <div class="slide">
+                <img src="image/轮播图.png" alt="轮播图2">
+            </div>
+            <div class="slide">
+                <img src="image/轮播图.png" alt="轮播图3">
+            </div>
+            <div class="slide">
+                <img src="image/轮播图.png" alt="轮播图4">
+            </div>
+        </div>
+        
+        <!-- 轮播图导航按钮 -->
+        <button class="slider-btn prev-btn">&lt;</button>
+        <button class="slider-btn next-btn">&gt;</button>
+        
+        <!-- 轮播图指示点 -->
+        <div class="slide-indicators">
+            <span class="indicator active"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
         </div>
     </div>
 
@@ -231,5 +358,127 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // 增强轮播图脚本 - 添加更丰富的动态效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentSlide = 0;
+            let slideInterval;
+            let effectMode = 0; // 0: 淡入淡出+缩放, 1: 左滑动, 2: 右滑动
+            
+            // 随机选择过渡效果
+            function chooseTransitionEffect() {
+                return Math.floor(Math.random() * 3);
+            }
+            
+            // 显示指定索引的幻灯片
+            function showSlide(index, direction) {
+                // 获取当前激活的幻灯片
+                const currentActive = document.querySelector('.slide.active');
+                
+                // 选择效果模式
+                effectMode = chooseTransitionEffect();
+                
+                // 移除所有过渡类
+                slides.forEach(slide => {
+                    slide.classList.remove('active', 'slide-left', 'slide-right', 'active-from-left', 'active-from-right');
+                });
+                
+                // 应用选择的效果
+                if (effectMode === 1 && direction === 'next') {
+                    // 左滑动效果
+                    currentActive?.classList.add('slide-left');
+                    slides[index].classList.add('slide-right');
+                    
+                    // 使用setTimeout创建两步动画
+                    setTimeout(() => {
+                        slides[index].classList.remove('slide-right');
+                        slides[index].classList.add('active', 'active-from-right');
+                    }, 50);
+                } 
+                else if (effectMode === 2 && direction === 'prev') {
+                    // 右滑动效果
+                    currentActive?.classList.add('slide-right');
+                    slides[index].classList.add('slide-left');
+                    
+                    setTimeout(() => {
+                        slides[index].classList.remove('slide-left');
+                        slides[index].classList.add('active', 'active-from-left');
+                    }, 50);
+                } 
+                else {
+                    // 默认淡入淡出+缩放效果
+                    slides[index].classList.add('active');
+                }
+                
+                // 移除所有指示点的激活状态
+                indicators.forEach(indicator => {
+                    indicator.classList.remove('active');
+                });
+                
+                // 激活对应指示点
+                indicators[index].classList.add('active');
+                
+                // 更新当前幻灯片索引
+                currentSlide = index;
+            }
+            
+            // 显示下一张幻灯片
+            function nextSlide() {
+                let next = (currentSlide + 1) % slides.length;
+                showSlide(next, 'next');
+            }
+            
+            // 显示上一张幻灯片
+            function prevSlide() {
+                let prev = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(prev, 'prev');
+            }
+            
+            // 启动自动轮播
+            function startSlideshow() {
+                slideInterval = setInterval(nextSlide, 5000); // 每5秒切换一次
+            }
+            
+            // 停止自动轮播
+            function stopSlideshow() {
+                clearInterval(slideInterval);
+            }
+            
+            // 为指示点添加点击事件
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    const direction = index > currentSlide ? 'next' : 'prev';
+                    showSlide(index, direction);
+                    stopSlideshow();
+                    startSlideshow(); // 重新开始轮播
+                });
+            });
+            
+            // 为导航按钮添加点击事件
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                stopSlideshow();
+                startSlideshow(); // 重新开始轮播
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                stopSlideshow();
+                startSlideshow(); // 重新开始轮播
+            });
+            
+            // 启动轮播
+            startSlideshow();
+            
+            // 鼠标悬停时暂停轮播，离开时继续
+            const sliderContainer = document.querySelector('.hero-slider');
+            sliderContainer.addEventListener('mouseenter', stopSlideshow);
+            sliderContainer.addEventListener('mouseleave', startSlideshow);
+        });
+    </script>
 </body>
 </html> 

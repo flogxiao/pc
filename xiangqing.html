@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食物&保健 - 商品详情</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 导航区域 -->
+    <header>
+        <div class="logo">
+            <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                <img src="image/log3.png" alt="派则自然">
+                <span>派择自然</span>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html#about">品牌简介</a></li>
+                <li><a href="chanpin.html">产品理念</a></li>
+                <li><a href="chanpin.html">品控</a></li>
+                <li><a href="#news">新闻资讯</a></li>
+                <li><a href="pinpaill.html">关于我们</a></li>
+            </ul>
+        </nav>
+        <div class="user-section">
+            <span>¥0.00</span>
+            <a href="#cart" class="cart">账户</a>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="product-detail">
+        <div class="product-container">
+            <!-- 左侧商品图片区域 -->
+            <div class="product-images">
+                <div class="main-image">
+                    <div class="image-container">
+                        <img src="image/sptp.png" alt="产品图片" id="mainImage">
+                        <div class="slide-indicators">
+                            <span class="indicator active"></span>
+                            <span class="indicator"></span>
+                            <span class="indicator"></span>
+                            <span class="indicator"></span>
+                            <span class="indicator"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumbnail-list">
+                    <img src="image/sptp.png" class="thumbnail active">
+                    <img src="image/sptp.png" class="thumbnail">
+                    <img src="image/sptp.png" class="thumbnail">
+                    <img src="image/sptp.png" class="thumbnail">
+                </div>
+            </div>
+
+            <!-- 右侧商品信息区域 -->
+            <div class="product-info">
+                <h1 class="product-title">食物&保健</h1>
+                <div class="price-range">¥36.00-¥168.00</div>
+                
+                <div class="specification">
+                    <span class="spec-label">规格：</span>
+                    <div class="spec-options">
+                        <label class="spec-item">
+                            <input type="radio" name="spec" value="36.00">
+                            <span class="spec-text">¥36.00</span>
+                        </label>
+                        <label class="spec-item">
+                            <input type="radio" name="spec" value="66.00">
+                            <span class="spec-text">¥66.00</span>
+                        </label>
+                        <label class="spec-item">
+                            <input type="radio" name="spec" value="118.00">
+                            <span class="spec-text">¥118.00</span>
+                        </label>
+                        <label class="spec-item">
+                            <input type="radio" name="spec" value="138.00">
+                            <span class="spec-text">¥138.00</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="quantity-control">
+                    <button class="quantity-btn minus">-</button>
+                    <input type="number" value="1" min="1" class="quantity-input">
+                    <button class="quantity-btn plus">+</button>
+                </div>
+
+                <button class="add-to-cart">加入购物车</button>
+            </div>
+        </div>
+        
+        <!-- 产品信息表格 -->
+        <div class="product-info-table">
+            <h2 class="product-info-title">产品信息</h2>
+            <table>
+                <tr>
+                    <th>产品名称</th>
+                    <td>德玛利低敏低脂猫粮</td>
+                </tr>
+                <tr>
+                    <th>生产地址</th>
+                    <td>安徽宣城</td>
+                </tr>
+                <tr>
+                    <th>产品配方</th>
+                    <td>鲜鸡肉(80%)，鸡肉粉(10%)，紫薯，玉米，西兰花，胡萝卜，芹菜</td>
+                </tr>
+                <tr>
+                    <th>产品优势</th>
+                    <td>
+                        1.采用烘焙工艺，加温温度120-170度和膨化粮相比，所产生的焦化物更少。<br>
+                        2.单一肉蛋白，避免其他过敏性更强的蛋白，有助于减少消化和皮肤负担。<br>
+                        3.不含鱼油，油脂来源于鸡肉，性能更稳定，加热过程中，不容易产生反式脂肪酸。
+                    </td>
+                </tr>
+                <tr>
+                    <th>保质期限</th>
+                    <td>20241213-20260512</td>
+                </tr>
+            </table>
+            
+            <h2 class="product-info-title">注意事项</h2>
+            <div class="product-notice">
+                <p>1.请序渐进换粮，遵循七天换粮法。</p>
+                <p>2.本品不适合反复挑粮。</p>
+                <p>3.拆装后请及时使用，避免因保存不当，引起品质变化，如拆装后产品存有气味，外观常常，请及时联系客服。</p>
+            </div>
+        </div>
+
+        <!-- 修改产品展示区域，使用单张图片 -->
+        <div class="product-showcase">
+            <h2 class="product-info-title">产品展示</h2>
+            
+            <div class="product-size-display">
+                <div class="product-size-item">
+                    <div class="product-image-container">
+                        <img src="image/5ml.png" alt="5ml规格" class="product-display-image">
+                    </div>
+                    <div class="product-size-label">5ml</div>
+                </div>
+                
+                <div class="product-size-item">
+                    <div class="product-image-container">
+                        <img src="image/50ml.png" alt="50ml规格" class="product-display-image">
+                    </div>
+                    <div class="product-size-label">50ml</div>
+                </div>
+                
+                <div class="product-size-item">
+                    <div class="product-image-container">
+                        <img src="image/15ml.png" alt="15ml规格" class="product-display-image">
+                    </div>
+                    <div class="product-size-label">15ml</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 在页脚前添加"猜你喜欢"部分 -->
+    <div class="maybe-you-love">
+        <div class="maybe-you-love-title">
+            <h2>猜你喜欢</h2>
+            <p>MAYBE YOU LOVE</p>
+        </div>
+        
+        <div class="maybe-you-love-products">
+            <div class="related-product">
+                <a href="xiangqing.html">
+                    <img src="image/瓶子.png" alt="佛手柑">
+                    <p>佛手柑</p>
+                </a>
+            </div>
+            <div class="related-product">
+                <a href="xiangqing.html">
+                    <img src="image/瓶子.png" alt="小花茉莉">
+                    <p>小花茉莉</p>
+                </a>
+            </div>
+            <div class="related-product">
+                <a href="xiangqing.html">
+                    <img src="image/瓶子.png" alt="玫瑰天竺葵">
+                    <p>玫瑰天竺葵</p>
+                </a>
+            </div>
+            <div class="related-product">
+                <a href="xiangqing.html">
+                    <img src="image/瓶子.png" alt="醒目薰衣草">
+                    <p>醒目薰衣草</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚区域 -->
+    <div class="certification-section">
+        <img src="images/certification.png" alt="" class="certification-image">
+    </div>
+    <div class="page-divider"></div>
+    <div class="footer-wrapper">
+        <div class="footer-top-section">
+            <div class="footer-logo-container">
+                <img src="image/log3.png" alt="派则自然" class="footer-logo-white">
+                <div class="footer-slogan">从自然中寻找答案</div>
+            </div>
+        </div>
+        
+        <div class="footer-main-section">
+            <div class="footer-column contact-column">
+                <h3>联系我们</h3>
+                <p>地址：深圳市宝安区海秀路黄金台工业区2-2105</p>
+                <p>电话：400-1199-631</p>
+                <p>邮箱：petandnature@163.com</p>
+            </div>
+            
+            <div class="footer-column follow-column">
+                <h3>关注我们</h3>
+                <p>小红书：</p>
+                <p>公众号：</p>
+            </div>
+            
+            <div class="footer-column subscribe-column">
+                <h3>邮件订阅</h3>
+                <div class="subscribe-form">
+                    <input type="email" placeholder="请输入您的邮箱">
+                    <button type="submit">点击此处订阅</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>PET&NATURE深圳派自然宠物用品有限责任公司 浙ICP备202310578号-2</p>
+        </div>
+    </div>
+
+    <script>
+        // 更新已有的轮播脚本，同步指示点
+        let currentSlide = 0;
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const indicators = document.querySelectorAll('.indicator');
+        
+        function updateSlide(index) {
+            // 更新缩略图激活状态
+            thumbnails.forEach(t => t.classList.remove('active'));
+            thumbnails[index].classList.add('active');
+            
+            // 更新指示点激活状态
+            indicators.forEach(i => i.classList.remove('active'));
+            indicators[index].classList.add('active');
+            
+            // 更新主图
+            document.getElementById('mainImage').src = thumbnails[index].src;
+        }
+        
+        function autoSlide() {
+            currentSlide = (currentSlide + 1) % thumbnails.length;
+            updateSlide(currentSlide);
+        }
+        
+        // 每3秒切换一次图片
+        const slideInterval = setInterval(autoSlide, 3000);
+        
+        // 为缩略图添加点击事件
+        thumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', function() {
+                clearInterval(slideInterval);
+                currentSlide = index;
+                updateSlide(currentSlide);
+                
+                // 重新开始自动轮播
+                setTimeout(() => {
+                    const newInterval = setInterval(autoSlide, 3000);
+                }, 5000);
+            });
+        });
+        
+        // 为指示点添加点击事件
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', function() {
+                clearInterval(slideInterval);
+                currentSlide = index;
+                updateSlide(currentSlide);
+                
+                // 重新开始自动轮播
+                setTimeout(() => {
+                    const newInterval = setInterval(autoSlide, 3000);
+                }, 5000);
+            });
+        });
+    </script>
+    
+    <style>
+        /* 产品信息表格样式 */
+        .product-info-table {
+            margin-top: 50px;
+            background-color: #fff9ed;
+            padding: 30px;
+            border-radius: 5px;
+        }
+        
+        .product-info-title {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .product-info-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .product-info-table th {
+            width: 20%;
+            text-align: left;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .product-info-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .product-notice {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+        
+        .product-notice p {
+            margin-bottom: 10px;
+        }
+
+        /* 产品展示区域样式修改 */
+        .product-showcase {
+            margin-top: 50px;
+            background-color: #fff9ed;
+            padding: 30px;
+            border-radius: 5px;
+            margin-bottom: 50px;
+        }
+        
+        .product-size-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            margin-top: 30px;
+        }
+        
+        .product-size-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .product-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .product-display-image {
+            max-width: 80%;
+            height: auto;
+            object-fit: contain;
+        }
+        
+        .product-size-label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* 猜你喜欢区域样式 */
+        .maybe-you-love {
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .maybe-you-love-title {
+            background-color: #a3cc5a;
+            padding: 20px 0;
+            text-align: center;
+            color: #000;
+            margin-bottom: 30px;
+        }
+        
+        .maybe-you-love-title h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .maybe-you-love-title p {
+            font-size: 16px;
+            margin: 0;
+        }
+        
+        .maybe-you-love-products {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 0 5%;
+            background-color: #fff9ed;
+        }
+        
+        .related-product {
+            text-align: center;
+            margin: 20px 10px;
+            width: 20%;
+            min-width: 150px;
+        }
+        
+        .related-product a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+        
+        .related-product img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        .related-product p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        /* 调整主图样式，移除背景 */
+        .main-image {
+            text-align: center;
+            margin-bottom: 15px;
+            padding: 0;
+            position: relative;
+        }
+        
+        .image-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .main-image img {
+            max-height: 350px;
+            width: auto;
+            display: block;
+        }
+        
+        /* 修改轮播指示点样式，直接显示在图片底部 */
+        .slide-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+        
+        .indicator {
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .indicator.active {
+            background-color: #fff;
+        }
+
+        /* 添加页脚顶部区域的样式 */
+        .footer-top-section {
+            background-color: rgb(121,171,12);
+        }
+
+        /* 添加顶部导航区域的背景色 */
+        header {
+            background-color: rgb(121,171,12);
+        }
+    </style>
+</body>
+</html> 
